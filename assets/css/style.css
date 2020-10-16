@@ -35,7 +35,7 @@ body { /* start page text and background */
   padding-right: 5px;
 } */ 
 
-.main { /* start page center h1 and p */
+.main { /* start page center h1, p, and button */
   text-align: center;  
   padding: 20px 5px auto 5px;
   padding-top: 70px;
@@ -48,4 +48,34 @@ body { /* start page text and background */
   font-size: 25px;
   background-color: purple;
   color: white;
+}
+
+.scores { /* high scores page center h1, text box, and buttons */
+  text-align: center;  
+  padding: 20px 5px auto 5px;
+  padding-top: 70px;
+  color: hsl(206, 17%, 28%);
+  font-size: 25px;
+} 
+
+.btn{ /* put space between buttons */
+  margin: 0 20px; 
+  padding: 20px;
+
+}
+
+.summary { /* summary page center h1, h2, score, initials, and button */
+  text-align: center;  
+  padding: 20px 5px auto 5px;
+  padding-top: 70px;
+  color: hsl(206, 17%, 28%);
+  font-size: 25px;
+} 
+
+.btn-start {
+  -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
 }
