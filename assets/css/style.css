@@ -118,11 +118,11 @@ body { /* start page text and background */
   
 }  
 
-.showStatus { /* display right or wrong */
+
+.RW { /* display right or wrong */
   text-align: left;
   width: 100%;
   margin-left: 35%;
   font-style: italic;
   font: orange;
 }
-

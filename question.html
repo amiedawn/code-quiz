@@ -14,31 +14,26 @@
     <div>
       <a href="score.html">View High Scores</a>
     </div>
-   <!-- <div class = "showTimer"> -->
       <p id="showTimer">Time: <span id="countdownTimer"></span> seconds remaining</p> 
     </div>
   </header>
-
-  <div id="frameTotal"> <!-- question, 4 choices of answers, line, and right/wrong are all dynamically created-->
-    <p id="fred"> Time: <span id="countdownTimer"></span> seconds remaining</p>
-   
-    <div id="showQuestion"></div>
+<div id="frameTotal"> <!-- question, 4 choices of answers, line, and right/wrong are all dynamically created-->
+     <div id="showQuestion"></div>
     <div id="writeQuestions"></div>  
     <!-- <div id="showTimer"> -->
       <div id="showCounter"></div>
-      <div id="totalTimeGauge"></div>
-      <div id="showTimeGauge"></div>
+      <div id="totalTimeTrack"></div>
+      <div id="showTimeTrack"></div>
     </div>
     <div id="showChoices">
-      <div class="choice" id="A" onclick="checkAnswer('A')">A</div>
-      <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
-      <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
-      <div class="choice" id="D" onclick="checkAnswer('D')">D</div>
-      <div class="showStatus"></div>
+      <div class="choice" id="A">A</div>
+      <div class="choice" id="B">B</div>
+      <div class="choice" id="C">C</div>
+      <div class="choice" id="D">D</div>
     </div>
-    <div id="progress"> <div class="prog"></div></div>
-    <div id="showRightorWrong"></div>
-    <div class="highScores"></div>
+    <div id="displayRW"> 
+      <div class="RW"></div>
+    </div>
   </div>
   
   <script src="./assets/js/script.js"></script>
