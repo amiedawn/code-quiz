@@ -74,27 +74,50 @@ body { /* start page text and background */
     text-decoration: none;
 }
 
-.btn-choices { /* multiple choice answers */
-  background-color: yellow;
+#frameTotal { /* question page whole page except for heading */
+  text-align: left;  
+  margin-left: 35%;
+ /* padding: 20px 5px auto 5px; */
+  padding-top: 70px;
+  color: hsl(206, 17%, 28%);
+  font-size: 25px;
+} 
+
+#writeQuestions, #showChoices {
+  text-align: left;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  font-size: 25px;
+ 
+}
+#showQuestion {
   color: black;
-  padding: 5 px;
+  width: 600px;
+  font-size: 25px;
+  
+} 
+
+
+.choice { /* question page multiple choice answers */
+  background-color:cyan;
+  color: black;
+  padding: 10px;
   margin: 10px;
-  border-radius: 10px;
-  width: 50px;
+  width: 300px;
+  border-color: black;
+  border-style: solid;
+  font-size: 20px;
+  
 }  
 
-#textQuestions {
-  text-align: center;
-}
-
-#textChoices {
+.showStatus { /* display right or wrong */
   text-align: left;
+  width: 100%;
+  margin-left: 35%;
+  font-style: italic;
+  font: orange;
 }
 
-#green1 {
-  background-color: green;
-}
-
-#red1 {
-  background-color: red;
-}

@@ -20,9 +20,8 @@
   </header>
 
   <div id="frameTotal"> <!-- question, 4 choices of answers, line, and right/wrong are all dynamically created-->
-    <div id="showQuestion">
-      <p>Question: </p>
-    </div>  
+    <div id="showQuestion"></div>
+    <div id="writeQuestions"></div>  
     <div id="showTimer">
       <div id="showCounter"></div>
       <div id="totalTimeGauge"></div>
@@ -33,11 +32,13 @@
       <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
       <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
       <div class="choice" id="D" onclick="checkAnswer('D')">D</div>
+      <div class="showStatus"></div>
     </div>
+    <div id="progress"> <div class="prog"></div></div>
+    <div id="showRightorWrong"></div>
+    <div class="highScores"></div>
   </div>
-  <div id="showRightOrWrong"> 
-    <div class="rightOrWrong"></div>
-  </div>
+  
   <script src="./assets/js/script.js"></script>
 </body>
 </html>
