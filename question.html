@@ -14,15 +14,16 @@
     <div>
       <a href="score.html">View High Scores</a>
     </div>
-    <div>
-      <p>Time: </p>
+    <div class = "showTimer">
+      <p>Time: <span onclick="counterTimer(timeleft)"></span> seconds remaining</p> 
+   
     </div>
   </header>
 
   <div id="frameTotal"> <!-- question, 4 choices of answers, line, and right/wrong are all dynamically created-->
     <div id="showQuestion"></div>
     <div id="writeQuestions"></div>  
-    <div id="showTimer">
+    <!-- <div id="showTimer"> -->
       <div id="showCounter"></div>
       <div id="totalTimeGauge"></div>
       <div id="showTimeGauge"></div>

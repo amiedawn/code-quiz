@@ -71,21 +71,21 @@ function startQuiz() {
   writeQuestions();
  // generateQuestions();
   
- // countdownTimer();
-}
+  countdownTimer();
+} 
 
 // timer function that starts at 60 and ends at 0
 function countdownTimer() {
   var timeleft = 60;
   var timer = setInterval(function () {
     timeleft = timeleft - 1;
-   //**put this back in to get timer to work */
-    // document.getElementById("countdownTimer").textContent = timeleft;
+    document.getElementById("showTimer").innerHTML = timeleft;
     if (timeleft <= 0) {
       clearInterval(timer);
     }
   }, 1000);  
 };
+
 
 var generateBtn = document.querySelector("#writeQuestions");
 
@@ -156,27 +156,10 @@ function checkAnswer(answer) {
 
 
 
-
-  
-
-
-
-
-
-
-
-
-
-
-
 // event listeners
 document.addEventListener("click", startQuiz);
 
-//generateBtn.addEventlistener("click", writeQuestions);
-// what you would use if in <body> you have <button id="btnNext">Next</button>
-// this will display the next question
-document.addEventListener("click", checkAnswer());
 
-// maybe needs to go after event listeners?
-//displayQuestion();
-//countdownTimer();
+writeQuestions();
+
+countdownTimer();

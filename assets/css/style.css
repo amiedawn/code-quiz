@@ -29,6 +29,10 @@ body { /* start page text and background */
   margin-right: 220px;
 }  
 
+.activeTimer { /* countdown on questions page */
+  margin-right: 200px;
+}
+
 .main { /* start page center h1, p, and button */
   text-align: center;  
   padding: 20px 5px auto 5px;
@@ -91,6 +95,7 @@ body { /* start page text and background */
   flex-wrap: wrap;
   justify-content: flex-start;
   font-size: 25px;
+  margin-left: 35%;
  
 }
 #showQuestion {
