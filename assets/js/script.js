@@ -79,7 +79,7 @@ function countdownTimer() {
   var timeleft = 60;
   var timer = setInterval(function () {
     timeleft = timeleft - 1;
-    document.getElementById("showTimer").innerHTML = timeleft;
+    document.getElementById("fred").innerHTML = timeleft;
     if (timeleft <= 0) {
       clearInterval(timer);
     }
