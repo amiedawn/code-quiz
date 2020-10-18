@@ -8,11 +8,16 @@ var choiceC = document.querySelector("#C");
 var choiceD = document.querySelector("#D");
 var showCounter = document.querySelector("#showCounter");
 var displayRW = document.querySelector("#displayRW");
-var showRightOrWrong = document.querySelector("#showRightOrWrong");
 var highScores = document.querySelector(highScores);
+var generateBtn = document.querySelector("#writeQuestions");
+var answerChosen = document.querySelector(".choice")
 
-//debugger;
-// display questions
+var currentQIndex = 0;
+var choice = "";
+var timeLeft = 60;
+var timerEl = "";
+
+// Questions and answers:
 var arrQuestions = [
   {
     showQuestion: "1.  Commonly used data types DO NOT include: ",
@@ -56,25 +61,16 @@ var arrQuestions = [
   }
 ];
 
+//collect answers chosen by user click
 choiceA.onclick = answerRW;
 choiceB.onclick = answerRW;
 choiceC.onclick = answerRW;
 choiceD.onclick = answerRW;
-// global variables
+
 var lastQIndex = arrQuestions.length - 1;
-var currentQIndex = 0;
-//var timer; // possibly take away var timer in function countdownTimer()
-var rightOrWrong = 0;
-var choice = "";
-var status = "";
 
 function startQuiz() {
-
-  //var timer = 0;
   writeQuestions();
-
-  // generateQuestions();
-
   countdownTimer();
 }
 
@@ -90,93 +86,65 @@ function countdownTimer() {
   }, 1000);
 };
 
-
-var generateBtn = document.querySelector("#writeQuestions");
+//document.getElementById("countdownTimer").innerHTML = timeLeft;
+//debugger;
 
 //display question and choices to the screen
 function writeQuestions() {
   console.log("currentQIndex", currentQIndex);
   console.log("lastQIndex", lastQIndex);
   var q = arrQuestions[currentQIndex];
-
+  
   showQuestion.innerHTML = "<p>" + q.showQuestion + "</p>";
   choiceA.innerHTML = q.choiceA;
   choiceB.innerHTML = q.choiceB;
   choiceC.innerHTML = q.choiceC;
   choiceD.innerHTML = q.choiceD;
 }
-//generateQuestions();  
-//writeQuestions(); 
-
-var answerChosen = document.querySelector(".choice")
 
 function answerRW(answer) {
   console.log(this.innerText.trim())
   console.log(arrQuestions[currentQIndex].rightChoice.trim())
-  //loop through questions and print right or wrong based on answer chosen
-
-  //for(var i=0; i <= lastQIndex; i++) {
+  
   if (arrQuestions[currentQIndex].rightChoice.trim() === this.innerText.trim()) {
     displayRW.innerHTML = "Right!";
+    checkAnswer();
+    
   } else {
     displayRW.innerHTML = "Wrong!";
+    timeLeft = timeLeft -10;
+    if (timeLeft < 0) {
+    //  timeLeft.innerHTML = "Time: 0 seconds remaining"; doesn't work
+     
+    }
+    checkAnswer();
   }
-  //status.innerHTML = status.innerHTML + "<div class='RW' id=" + i + "></div>";
-  //rightOrWrong = rightOrWrong + 1;
-  // } else {
-  // status = "Wrong!"
-  // }
-
-  // }
 }
 
-
-// function rightAnswer() {
-//   document.getElementById("displayRW").innerHTML = 
-//   document.getElementById("countdownTimer").innerHTML = timeleft;
-// }
-
-// function wrongAnswer() {
-//   document.getElementById("currentQIndex")
-// }
-
-// function showScores() {
-//   // navigate to summary page and display score there
-//   highScores.style.display = "block";
-
-//*******figure this out */
-
-
-// }
-
-function checkAnswer(answer) {
-  //if (arrQuestions[currentQIndex].rightChoice === answer) {
-  //  status = "Right!"
-  //status.innerHTML = status.innerHTML + "<div class='RW' id=" + i + "></div>";
-  //rightOrWrong = rightOrWrong + 1;
-  // } else {
-  // status = "Wrong!"
-  // }
+//function checkAnswer(answer) {
   console.log("currentQIndex", currentQIndex);
   console.log("lastQIndex", lastQIndex);
   if (currentQIndex < lastQIndex) {
-    // count = 0; // maybe don't need this??
     writeQuestions();
+    //checkAnswer();
     currentQIndex = currentQIndex + 1; //makes it go to the next question
+    //displayRW.innerHTML = ""; //??
   } else {
     showScores();
   }
-};
-
-// function RightOrWrong() {
-//   if (status === "Right!")
 
 
-// }
+function showScores() {
+  // navigate to summary page and display score there
+  window.location.href = "summary.html";
+
+/********figure this out */
 
 
+}
 
-// event listeners
+
+// event listeners:
 document.addEventListener("click", startQuiz);
 //document.addEventListener("click", )
 

@@ -95,16 +95,15 @@ body { /* start page text and background */
   flex-wrap: wrap;
   justify-content: flex-start;
   font-size: 25px;
-  margin-left: 35%;
- 
+  margin-left: 35%; 
 }
+
 #showQuestion {
   color: black;
   width: 600px;
   font-size: 25px;
   
 } 
-
 
 .choice { /* question page multiple choice answers */
   background-color:cyan;
@@ -118,11 +117,14 @@ body { /* start page text and background */
   
 }  
 
+.choice:hover { background-color: yellow} 
 
-.RW { /* display right or wrong */
+#displayRW { /* display right or wrong */
   text-align: left;
   width: 100%;
-  margin-left: 35%;
+  margin-left: 37%;
   font-style: italic;
-  font: orange;
+  color: #ff4500;
+  font-size: 30px;
+  padding-top: 20px;
 }
