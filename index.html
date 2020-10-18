@@ -14,8 +14,12 @@
         <a href="score.html">View High Scores</a>
       </div>
       <div>
-        <p>Time: <span id="countdownTimer">60 </span> seconds remaining</p>
+      <!--  <p>Time: <span id="countdownTimer">60 </span> seconds remaining</p> -->
+      <p id="showTimer">Time: <span id="countdownTimer"></span> seconds remaining</p>
       </div>
+      <div id="showCounter"></div> <!-- may not need this-->
+      <div id="totalTimeTrack"></div>
+      <div id="showTimeTrack"></div>
     </header>
     <div class = "main">
       <h1>Coding Quiz</h1>
@@ -23,12 +27,26 @@
         Keep in mind that incorrect answers will penalize your score/time<br>
         by ten seconds!
       </p>
-      
       <!-- button link to question page -->
-      <a href="question.html" id="startButton" class="btn btn-start">Start Quiz</a> 
+      <a id="start" class="btn btn-start">Start Quiz</a> 
       <!-- <a href="question.html" id="startButton" class="btn btn-start" onclick="writeQuestions()">Start Quiz</a> 
         line above gives same results as bad event listeners -->
+      <div id="hideStartPage" style="display:none;"></div>  <!-- hide when starting quiz-->
       
+      <!-- question, 4 choices of answers, line, and right/wrong are all dynamically created-->
+      <div id="frameTotal"></div>
+        <div id="showQuestion"></div>
+          <div id="showChoices">
+            <div class="choice" id="A" onclick="checkAnswer('A')">A</div>
+            <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
+            <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
+            <div class="choice" id="D" onclick="checkAnswer('D')">D</div>
+          </div>
+          <div id="displayRW">
+            <hr /> <!-- horizontal line if I have time to style and add in -->
+          <div class="RW"></div>
+        </div>
+      </div>
     </div>
  
 

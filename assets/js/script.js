@@ -1,32 +1,43 @@
 var currentQIndex = 0;
 var choice = "";
 var timeLeft = 60;
-var timer = 0; 
+var timer = 60; 
 var arrQuestions = [];
+var start = document.querySelector("#start");
+console.log(start);
+//var lastQIndex = arrQuestions.length - 1;
+var lastQIndex = 0;
+var choiceA = document.querySelector("#A");
+var choiceB = document.querySelector("#B");
+var choiceC = document.querySelector("#C");
+var choiceD = document.querySelector("#D");
 
-debugger;
 
 function startQuiz() {
+  console.log("hello");
+  //return;
+  
   init();
-  writeQuestions();
+  frameTotal.style.display = "none";
+  //writeQuestions();
   showTimer = setInterval(countdownTimer, 1000);
+  writeQuestions();
+  checkAnswer();
 }
 
 function init() {
-  var start = document.querySelector("#startQuiz");
+  
+  var main = document.querySelector("#main");
+ // var showQuestion = document.querySelector("#showQuestion");
   var frameTotal = document.querySelector("#frameTotal");
-  var showQuestion = document.querySelector("#showQuestion");
   var showTimer = document.querySelector("#showTimer");
   var totalTimeTrack = document.querySelector("#totalTimeTrack");
   var showTimeTrack = document.querySelector("#showTimeTrack");
-  var choiceA = document.querySelector("#A");
-  var choiceB = document.querySelector("#B");
-  var choiceC = document.querySelector("#C");
-  var choiceD = document.querySelector("#D");
-  var showCounter = document.querySelector("#showCounter");
-  var displayRW = document.querySelector("#displayRW");
+ 
+ // var showCounter = document.querySelector("#showCounter");
+ // var displayRW = document.querySelector("#displayRW");
   var highScores = document.querySelector(highScores);
-  var generateBtn = document.querySelector("#writeQuestions");
+ // var generateBtn = document.querySelector("#writeQuestions");
   var answerChosen = document.querySelector(".choice")
 
   // Questions and answers:
@@ -74,23 +85,23 @@ function init() {
     }
   ];
 
+  lastQIndex = arrQuestions.length -1;
+
   //collect answers chosen by user click
-  choiceA.onclick = answerRW;
-  choiceB.onclick = answerRW;
-  choiceC.onclick = answerRW;
-  choiceD.onclick = answerRW;
-
-  var lastQIndex = arrQuestions.length - 1;
-
+  choiceA.onclick = checkAnswer;
+  choiceB.onclick = checkAnswer;
+  choiceC.onclick = checkAnswer;
+  choiceD.onclick = checkAnswer;
 }
 
 function countdownTimer() { //print timer to screen
-  if (timer <= timeLeft) {
+  if (timeLeft <= timer) {
     //counter.innerHTML = timer; this is given but doesn't work
-    document.getElementById("countdownTimer").innerHTML = timer;
-    timer = timer - 1;
+    document.getElementById("countdownTimer").innerHTML = timeLeft;
+    timeLeft = timeLeft - 1;
+   
   } else {
-    timer = 0;
+    timeLeft = 0;
     //**store the score */
     checkAnswer();
   }
@@ -113,19 +124,34 @@ function writeQuestions() {
   choiceD.innerHTML = q.choiceD;
 }
 
+function checkAnswer(answer) {
+  console.log("currentQIndex", currentQIndex);
+  console.log("lastQIndex", lastQIndex);
+  if (currentQIndex <= lastQIndex) {
+    writeQuestions();
+    //checkAnswer();
+    currentQIndex = currentQIndex + 1; //makes it go to the next question
+    //displayRW.innerHTML = ""; //??
+  } else {
+    clearInterval(showTimer);
+    showScores();
+  }
+};
+
 function answerRW(answer) {
   console.log(this.innerText.trim())
   console.log(arrQuestions[currentQIndex].rightChoice.trim())
 
   if (arrQuestions[currentQIndex].rightChoice.trim() === this.innerText.trim()) {
     displayRW.innerHTML = "Right!";
-    checkAnswer();
+    //checkAnswer();
+    writeQuestions();
 
   } else {
     displayRW.innerHTML = "Wrong!";
-    timer = timer - 10;
+    timeLeft = timeLeft - 10;
     if (timer < 0) {
-      timer.innerHTML = "Time is up!"
+      timeLeft.innerHTML = "Time is up!"
     }
 
     // timeLeft = timeLeft - 10; **these 4 lines if using timeLeft to display timer
@@ -136,19 +162,7 @@ function answerRW(answer) {
   }
 }
 
-function checkAnswer(answer) {
-console.log("currentQIndex", currentQIndex);
-console.log("lastQIndex", lastQIndex);
-if (currentQIndex < lastQIndex) {
-  writeQuestions();
-  //checkAnswer();
-  currentQIndex = currentQIndex + 1; //makes it go to the next question
-  //displayRW.innerHTML = ""; //??
-} else {
-  clearInterval(showTimer);
-  showScores();
-}
-};
+
 
 function showScores() {
   // navigate to summary page and display score there
@@ -164,8 +178,8 @@ function showScores() {
 //debugger;
 //document.addEventListener("click", startQuiz);// had before. lines up answer with question, but wont load first question
   //**above, timer shows up after you click but totally wacky
-//start.addEventListener("click", startQuiz); //from video reference (same as next try)
+start.addEventListener("click", startQuiz); //from video reference (same as next try)
 //start.addEventListener("click", startQuiz);// won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
-document.getElementById("startButton").addEventListener("click", startQuiz); //won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
+//document.getElementById("startButton").addEventListener("click", startQuiz); //won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
 //start.querySelector("startButton").onclick = startQuiz; //won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
 //generateBtn.addEventListener("click", writeQuestions);// won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
