@@ -78,29 +78,17 @@ function startQuiz() {
 }
 
 function countdownTimer() { //print timer to screen
-  var x = 0;
-  if (x <= timeLeft) {
-    //counter.innerHTML = x; this is given but doesn't work
-    document.getElementById("countdownTimer").innerHTML = x;
-    x = x - 1;
+  if (timer <= timeLeft) {
+    //counter.innerHTML = timer; this is given but doesn't work
+    document.getElementById("countdownTimer").innerHTML = timer;
+    timer = timer - 1;
   } else {
-    x = 0;
-    //**store their score */
+    timer = 0;
+    //**store the score */
     checkAnswer();
   }
 };
 
-// timer function that starts at 60 and ends at 0
-// function countdownTimer() {
-//   //var timeleft = 60;
-//   var timer = setInterval(function () {
-//     timeleft = timeleft - 1;
-//     document.getElementById("countdownTimer").innerHTML = timeleft;
-//     if (timeleft <= 0) {
-//       clearInterval(timer);
-//     }
-//   }, 1000);
-// };
 
 //document.getElementById("countdownTimer").innerHTML = timeLeft;
 //debugger;
@@ -128,11 +116,15 @@ function answerRW(answer) {
 
   } else {
     displayRW.innerHTML = "Wrong!";
-    timeLeft = timeLeft - 10;
-    if (timeLeft < 0) {
-      //  timeLeft.innerHTML = "Time: 0 seconds remaining"; doesn't work
-
+    timer = timer - 10;
+    if (timer < 0) {
+      timer.innerHTML = "Time is up!"
     }
+
+    // timeLeft = timeLeft - 10; **these 4 lines if using timeLeft to display timer
+    // if (timeLeft < 0) {
+    //   //  timeLeft.innerHTML = "Time: 0 seconds remaining"; doesn't work
+    //    }
     checkAnswer();
   }
 }
@@ -168,4 +160,4 @@ debugger;
 //start.addEventListener("click", startQuiz);// won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
 //document.getElementById("startButton").addEventListener("click", startQuiz); //won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
 //start.querySelector("startButton").onclick = startQuiz; //won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
-
+//generateBtn.addEventListener("click", writeQuestions); won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
