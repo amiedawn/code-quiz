@@ -156,8 +156,9 @@ function showScores() {
 // event listeners:
 debugger;
 //document.addEventListener("click", startQuiz);// had before. lines up answer with question, but wont load first question
-//start.addEventListener("click", startQuiz); from video reference (same as next try)
+  //**above, timer shows up after you click but totally wacky
+//start.addEventListener("click", startQuiz); //from video reference (same as next try)
 //start.addEventListener("click", startQuiz);// won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
 //document.getElementById("startButton").addEventListener("click", startQuiz); //won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
 //start.querySelector("startButton").onclick = startQuiz; //won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
-//generateBtn.addEventListener("click", writeQuestions); won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
+//generateBtn.addEventListener("click", writeQuestions);// won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
