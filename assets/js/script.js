@@ -65,23 +65,26 @@ arrQuestions = [
 // increments to next question
 lastQIndex = arrQuestions.length - 1;
 
-//**need to keep this section so that it will ask all the questions
-//collect answers chosen by user click
-arrQuestions.choiceA.onclick = checkAnswer;
-arrQuestions.choiceB.onclick = checkAnswer;
-arrQuestions.choiceC.onclick = checkAnswer;
-arrQuestions.choiceD.onclick = checkAnswer;
-// choiceA.onclick = checkAnswer;
-// choiceB.onclick = checkAnswer;
-// choiceC.onclick = checkAnswer;
-// choiceD.onclick = checkAnswer;
-
-//var lastQIndex = arrQuestions.length - 1;
 var lastQIndex = 0;
 var choiceA = document.querySelector("#A");
 var choiceB = document.querySelector("#B");
 var choiceC = document.querySelector("#C");
 var choiceD = document.querySelector("#D");
+
+
+
+// arrQuestions.choiceA.onclick = checkAnswer; **my try(wrong)
+// arrQuestions.choiceB.onclick = checkAnswer;
+// arrQuestions.choiceC.onclick = checkAnswer;
+// arrQuestions.choiceD.onclick = checkAnswer;
+//**need to keep this section so that it will ask all the questions
+//collect answers chosen by user click
+choiceA.onclick = checkAnswer;
+choiceB.onclick = checkAnswer;
+choiceC.onclick = checkAnswer;
+choiceD.onclick = checkAnswer;
+
+//var lastQIndex = arrQuestions.length - 1;
 
 function startQuiz() {
   console.log("hello");  
@@ -92,10 +95,6 @@ function startQuiz() {
   writeQuestions();
   checkAnswer();
 }
-
-
-  
- 
 
 function countdownTimer() { //print timer to screen
   if (timeLeft <= timer) {
