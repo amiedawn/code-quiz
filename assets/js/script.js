@@ -2,6 +2,9 @@ var currentQIndex = 0;
 var choice = "";
 var timeLeft = 60;
 var timer = 0; 
+var arrQuestions = [];
+
+debugger;
 
 function startQuiz() {
   init();
@@ -27,7 +30,7 @@ function init() {
   var answerChosen = document.querySelector(".choice")
 
   // Questions and answers:
-  var arrQuestions = [];
+ 
   arrQuestions = [
     {
       showQuestion: "1.  Commonly used data types DO NOT include: ",
