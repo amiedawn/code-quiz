@@ -31,25 +31,25 @@
       <a id="start" class="btn btn-start" onclick="startQuiz()">Start Quiz</a> 
       <!-- <a href="question.html" id="startButton" class="btn btn-start" onclick="writeQuestions()">Start Quiz</a> 
         line above gives same results as bad event listeners -->
+    </div>
       
-      
-      <!-- question, 4 choices of answers, line, and right/wrong are all dynamically created-->
-      <div id="frameTotal"></div>
-        <div id="showQuestion"></div>
-          <div id="showChoices">
-            <div class="choice" id="A" onclick="checkAnswer('A')">A</div>
-            <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
-            <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
-            <div class="choice" id="D" onclick="checkAnswer('D')">D</div>
-            <!-- <div class="choice" id="A">A</div>
-            <div class="choice" id="B">B</div>
-            <div class="choice" id="C">C</div>
-            <div class="choice" id="D">D</div> -->
-          </div>
-          <div id="displayRW"></div>
+    <!-- question, 4 choices of answers, line, and right/wrong are all dynamically created-->
+    <div id="frameTotal"></div>
+      <div id="showQuestion"></div>
+        <div id="showChoices">
+          <div class="choice" id="A" onclick="answerRW('A')">A</div>
+          <div class="choice" id="B" onclick="answerRW('B')">B</div>
+          <div class="choice" id="C" onclick="answerRW('C')">C</div>
+          <div class="choice" id="D" onclick="answerRW('D')">D</div>
+          <!-- <div class="choice" id="A">A</div>
+          <div class="choice" id="B">B</div>
+          <div class="choice" id="C">C</div>
+          <div class="choice" id="D">D</div> -->
         </div>
+        <div id="displayRW"></div>
       </div>
     </div>
+    
  
 
   <script src="./assets/js/script.js"></script>

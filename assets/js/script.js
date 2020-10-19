@@ -31,7 +31,7 @@ arrQuestions = [
     choiceB: "b.  booleans",
     choiceC: "c.  alerts",
     choiceD: "d.  numbers",
-    rightChoice: "c. alerts",
+    rightChoice: 'C',
   },
   {
     showQuestion: "2.  A very useful tool during development and debugging for printing content to the debugger is: ",
@@ -86,27 +86,18 @@ var choiceD = document.querySelector("#D");
 // choiceD.onclick = checkAnswer;
 
 function showStartQuizScreen() {
+  // show start screen and hide questions
   main.style.display = "block";
   showQuestion.style.display = "none";
   showChoices.style.display = "none";
 };
 
 function startQuiz() {
-  debugger;
- var showHideStart = document.getElementById("main");
- var showHideQuestion = document.getElementById("showQuestion");
- var showHideChoices = document.getElementById("showChoices");
-
-    if (showHideQuestion.style.display === "none") {
-      showHideQuestion.style.display = "block";
-      showHideChoices.style.display = "block";
-      showHideStart.style.display = "none";
-    }
-  
- // main.style.display = "none";
- // showQuestion.style.display = "inline";
-  //showChoices.style.display = "block";
- // frameTotal.style.display = "block";
+ // debugger;
+  // hide start screen and show questions
+  main.style.display = "none";
+  showQuestion.style.display = "block";
+  showChoices.style.display = "block";
   
   writeQuestions();
   generateQuestions();
@@ -132,7 +123,7 @@ function countdownTimer() { //print timer to screen
     } else { 
       // end the quiz and show the score
       clearInterval(showTimer);
-      showScores();
+      //showScores(); <-- put this back in after showscores is written
     }  
   }
 };
@@ -160,9 +151,9 @@ function generateQuestions() {
 };  
  
 function answerRW(answer) { 
-  console.log(this.innerText.trim())
-  console.log(arrQuestions[currentQIndex].rightChoice.trim())
-   if( answer === arrQuestions[currentQIndex].rightChoice.trim()) {
+  console.log(answer)
+  console.log(arrQuestions[currentQIndex].rightChoice)
+   if( answer === arrQuestions[currentQIndex].rightChoice) {
      displayRW.innerHTML = "Right!";
      rightOrWrong = rightOrWrong + 1;
    } else {
@@ -174,22 +165,22 @@ function answerRW(answer) {
    } else {
      //end the quiz and show the score
       clearInterval(showTimer);
-      showScores();
+     // showScores(); <-- put in when I write showscores
    }  
 };  
 
-function showScores() {
+//function showScores() {
   //display the summaryBox 
   //determine and display score and other info on summary page
-  summaryBox.innerHTML = summaryBox.innerHTML + "<p>"+ timeLeft + "</p>";
+  //summaryBox.innerHTML = summaryBox.innerHTML + "<p>"+ timeLeft + "</p>";
   //have them enter their initials
 
 
-  window.location.href = "summary.html";
+  //window.location.href = "summary.html";
 
   /********figure this out */
 
-}
+//}
 
 
 // event listeners:
