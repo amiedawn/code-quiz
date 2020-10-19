@@ -6,12 +6,11 @@ body { /* start page text and background */
 .top-line {
   padding: 50px 35px;
   display: flex;
-  flex-direction: column;
+  align-items: center; /* makes high scores and time on the same line */
   font-size: 20px;
   justify-content: space-between;
-  
-
 }
+
 .top-line a { /* start page */
   text-decoration: none;
 }
@@ -25,17 +24,13 @@ body { /* start page text and background */
   margin-right: 20px;
 }
 
-.main { /* start page center h1, p, and button */
+#main { /* start page center h1, p, and button */
   text-align: center;  
   padding: 20px 5px auto 0px;
   padding-top: 70px;
   color: hsl(206, 17%, 28%); 
   font-size: 25px;
-  /* display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%; */
- } 
+} 
 
 #Clear-Scores {
   font-style: sans-serif;
@@ -60,7 +55,6 @@ body { /* start page text and background */
 .btn { /* put space between buttons */
   margin: 0 20px; 
   padding: 15px;
-
 }
 
 .summary { /* summary page center h1, h2, score, initials, and button */
