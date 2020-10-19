@@ -1,31 +1,24 @@
-html,body {overflow-x:hidden;}
-
-
 body { /* start page text and background */
   font-family: sans-serif;
   background-color: #f9fbfd;
 }
 
 .top-line {
-  /*width: 100%;*/
   padding: 50px 35px;
   display: flex;
-  flex-direction: rows;
+  flex-direction: column;
   font-size: 20px;
- /* align-items: stretch; */
   justify-content: space-between;
   
 
 }
 .top-line a { /* start page */
-  /*padding: 0;
-  margin: 0; */
   text-decoration: none;
 }
 
 .top-line p {
- /* float: right;*/
-  margin-right: 20px;
+ float: right;
+ margin-right: 20px;
 }  
 
 .activeTimer { /* countdown on questions page */
@@ -34,15 +27,24 @@ body { /* start page text and background */
 
 .main { /* start page center h1, p, and button */
   text-align: center;  
-  padding: 20px 5px auto 5px;
+  padding: 20px 5px auto 0px;
   padding-top: 70px;
-  color: hsl(206, 17%, 28%);
+  color: hsl(206, 17%, 28%); 
   font-size: 25px;
-} 
+  /* display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%; */
+ } 
+
+#Clear-Scores {
+  font-style: sans-serif;
+  font-size: 20px;
+}
 
 .btn { /* start page button styling */
   margin: 0 auto;
-  font-size: 25px;
+  font-size: 20px;
   background-color: purple;
   color: white;
 }
@@ -52,12 +54,12 @@ body { /* start page text and background */
   padding: 20px 5px auto 5px;
   padding-top: 70px;
   color: hsl(206, 17%, 28%);
-  font-size: 25px;
+  font-size: 20px;
 } 
 
-.btn{ /* put space between buttons */
+.btn { /* put space between buttons */
   margin: 0 20px; 
-  padding: 20px;
+  padding: 15px;
 
 }
 
@@ -69,7 +71,7 @@ body { /* start page text and background */
   font-size: 25px;
 } 
 
-.btn-start {
+.btn-start { /* takes away href formatting for high-scores try again button */
   -webkit-appearance: button;
     -moz-appearance: button;
     appearance: button;
@@ -77,16 +79,16 @@ body { /* start page text and background */
     text-decoration: none;
 }
 
-#frameTotal { /* question page whole page except for heading */
-  text-align: left;  
+/* #frameTotal { /* question page whole page except for heading */
+  /* text-align: left;  
   margin-left: 35%;
  /* padding: 20px 5px auto 5px; */
-  padding-top: 70px;
+  /* padding-top: 70px;
   color: hsl(206, 17%, 28%);
   font-size: 25px;
-} 
+}  */ 
 
-#showQuestion, #showChoices {
+#showQuestion, #showChoices { /* layout for questions and choices */
   text-align: left;
   width: 100%;
   display: flex;
@@ -97,11 +99,10 @@ body { /* start page text and background */
   margin-left: 35%; 
 }
 
-#showQuestion {
+#showQuestion { /* styling for each question */
   color: black;
   width: 600px;
   font-size: 25px;
-  
 } 
 
 .choice { /* question page multiple choice answers */
@@ -113,11 +114,10 @@ body { /* start page text and background */
   border-color: black;
   border-style: solid;
   font-size: 20px;
-  
 }  
 
-.choice:hover { background-color: yellow} 
-
+.choice:hover { background-color: yellow} /* make button yellow background if hovering over it */
+ 
 #displayRW { /* display right or wrong */
   text-align: left;
   width: 100%;
@@ -125,5 +125,8 @@ body { /* start page text and background */
   font-style: italic;
   color: #ff4500;
   font-size: 30px;
-  padding-top: 20px;
-}
+  padding-top: 20px; 
+} 
+
+/* use next line for testing out of container items */
+/** { outline: 1px red solid !important; visibility: visible !important } */

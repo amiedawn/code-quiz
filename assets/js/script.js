@@ -4,24 +4,16 @@ var choice = "";
 var timeLeft = 60;
 var timer = 60; 
 var arrQuestions = "";
+var score = 0;
 var start = document.querySelector("#start");
-console.log(start);
 var main = document.querySelector("#main");
-// var showQuestion = document.querySelector("#showQuestion");
+var showQuestion = document.querySelector("#showQuestion");
 var frameTotal = document.querySelector("#frameTotal");
 var showTimer = document.querySelector("#showTimer");
-var totalTimeTrack = document.querySelector("#totalTimeTrack");
-var showTimeTrack = document.querySelector("#showTimeTrack");
 var displayRW = document.querySelector("#displayRW");
 var summaryBox = document.querySelector("#rightOrWrong"); // <= not sure sure on this
-
-// var showCounter = document.querySelector("#showCounter");
-// var displayRW = document.querySelector("#displayRW");
-var highScores = document.querySelector(highScores);
-var answerChosen = document.querySelector(".choice")
-var score = 0;
-
-
+var summaryScreen = document.querySelector("#summaryScreen");
+//var highScores = document.querySelector(highScores);
 
 // Questions and answers:
 arrQuestions = [
@@ -73,62 +65,47 @@ var choiceB = document.querySelector("#B");
 var choiceC = document.querySelector("#C");
 var choiceD = document.querySelector("#D");
 
-// arrQuestions.choiceA.onclick = checkAnswer; **my try(wrong)
-// arrQuestions.choiceB.onclick = checkAnswer;
-// arrQuestions.choiceC.onclick = checkAnswer;
-// arrQuestions.choiceD.onclick = checkAnswer;
-
-//**need to keep this section so that it will ask all the questions, but if I add it, it has 4 boxes at start of project
-//collect answers chosen by user click
-// choiceA.onclick = checkAnswer;
-// choiceB.onclick = checkAnswer;
-// choiceC.onclick = checkAnswer;
-// choiceD.onclick = checkAnswer;
-
+// show start screen and hide questions and summary
 function showStartQuizScreen() {
-  // show start screen and hide questions
   main.style.display = "block";
   showQuestion.style.display = "none";
   showChoices.style.display = "none";
+ // summaryScreen.style.display = "none";
+};
+
+// show questions screen and hide start and summary
+function hideSummaryScreen() {
+  main.style.display = "none";
+ // summaryScreen.style.display = "none";
+  showQuestion.style.display = "block";
+  showChoices.style.display = "block";
+}
+
+// show summary screen and hide questions and main
+function showSummaryScreen() {
+  //summaryScreen.style.display = "block";
+  showQuestion.style.display = "none";
+  showChoices.style.display = "none";
+  main.style.display = "none";
 };
 
 function startQuiz() {
- // debugger;
-  // hide start screen and show questions
-  main.style.display = "none";
-  showQuestion.style.display = "block";
-  showChoices.style.display = "block";
-  
+  hideSummaryScreen();
+  countdownTimer();
   writeQuestions();
   generateQuestions();
-  countdownTimer();
-  showTimer = setInterval(countdownTimer, 1000);
 };
 
-function countdownTimer() { //print timer to screen
-
-//**** figure out how to store the score when the questions are answered before the timer runs out */
-  
-  if (timeLeft <= timer) {
-    //counter.innerHTML = timer; this is given but doesn't work
-    document.getElementById("countdownTimer").innerHTML = timeLeft;
+function countdownTimer() { 
+  showTimer = setInterval(function() {
+    document.getElementById("countdownTimer").innerHTML = timeLeft; //print timer to screen
     timeLeft = timeLeft - 1;
-   //********add something to end the timer at 0 */
-  } else {
-    //end the quiz and show the score
-    timeLeft = 0;
-    console.log("currentQIndex", currentQIndex);
-    console.log("lastQIndex", lastQIndex);
-    if (currentQIndex < lastQIndex) {
-      currentQIndex = currentQIndex + 1;
-      writeQuestions();
-    } else { 
-      // end the quiz and show the score
+    if (timeLeft <= 0) {
       clearInterval(showTimer);
-      //showScores(); <-- put this back in after showscores is written
-    }  
-  }
-};
+      showSummary();
+    }
+  }, 1000);  
+};  
 
 //display question and choices to the screen
 function writeQuestions() {
@@ -158,35 +135,43 @@ function answerRW(answer) {
   console.log(arrQuestions[currentQIndex].rightChoice)
    if( answer === arrQuestions[currentQIndex].rightChoice) {
      displayRW.innerHTML = "Right!";
+     // increase score by 1 if answer is right
      score = score + 1;
-   } else {
+    // decrease time by 10 seconds if an answer is wrong
+    } else {
       displayRW.innerHTML = "Wrong!";
+      timeLeft = timeLeft - 10;
    }
    console.log ("currentQIndex", currentQIndex);
    console.log ("lastQIndex", lastQIndex);
-   if (currentQIndex <= lastQIndex) {
+   debugger;
+   if (currentQIndex < lastQIndex) {
      currentQIndex = currentQIndex + 1;
      writeQuestions();
    } else {
      //end the quiz and show the score
       clearInterval(showTimer);
-     // showScores(); <-- put in when I write showscores
+      showSummary(); 
    }  
 };  
 
-//function showScores() {
-  //display the summaryBox 
-  //determine and display score and other info on summary page
-  //summaryBox.innerHTML = summaryBox.innerHTML + "<p>"+ timeLeft + "</p>";
-  //have them enter their initials
+function showSummary() {
+  var container = document.createElement("div");
+  container.style.textAlign = "center";
+  document.body.appendChild(container);
+
+  var done = document.createElement("h1");
+  done.style.textAlign = "center";
+  done.textContent = "All done!";
 
 
-  //window.location.href = "summary.html";
-
+  
+  
   /********figure this out */
 
-//}
+}
 
+//Summary screen
 
 // event listeners:
 // show startQuiz screen

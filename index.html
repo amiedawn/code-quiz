@@ -17,10 +17,9 @@
       <!--  <p>Time: <span id="countdownTimer">60 </span> seconds remaining</p> -->
       <p id="showTimer">Time: <span id="countdownTimer"></span> seconds remaining</p>
       </div>
-      <div id="showCounter"></div> <!-- may not need this-->
-      <div id="totalTimeTrack"></div>
-      <div id="showTimeTrack"></div>
     </header>
+    
+    <!-- Begin Start Section -->
     <div id = "main">
       <h1>Coding Quiz</h1>
       <p>Try to answer the following code-related questions within the time limit.<br>
@@ -29,11 +28,10 @@
       </p>
       <!-- button link to start quiz-->
       <a id="start" class="btn btn-start" onclick="startQuiz()">Start Quiz</a> 
-      <!-- <a href="question.html" id="startButton" class="btn btn-start" onclick="writeQuestions()">Start Quiz</a> 
-        line above gives same results as bad event listeners -->
     </div>
-      
-    <!-- question, 4 choices of answers, line, and right/wrong are all dynamically created-->
+    <!-- End Start Section -->
+
+    <!-- Begin Question Section -->
     <div id="frameTotal"></div>
       <div id="showQuestion"></div>
         <div id="showChoices">
@@ -41,17 +39,30 @@
           <div class="choice" id="B" onclick="answerRW('B')">B</div>
           <div class="choice" id="C" onclick="answerRW('C')">C</div>
           <div class="choice" id="D" onclick="answerRW('D')">D</div>
-          <!-- <div class="choice" id="A">A</div>
-          <div class="choice" id="B">B</div>
-          <div class="choice" id="C">C</div>
-          <div class="choice" id="D">D</div> -->
         </div>
         <div id="displayRW"></div>
       </div>
     </div>
-    
- 
+    <!-- End Question Section -->
 
+    <!-- Begin Summary Section -->
+    <!-- <div id="summaryScreen" class="summary">
+      <h1>All Done!</h1>
+      <div class="final-score">
+        <h2>Your final score is: </h2> -->
+        <!-- enter text box here for final score -->
+      <!-- </div>
+      <div class="submit-initials">
+        <p>Enter initials: </p> -->
+        <!-- enter text box here for initials -->
+        <!-- <button id="submit-initials" class="btn">Submit</button>
+      </div>
+    </div> --> -->
+    <!--//on message of "You answered " + right + " out of " + arrQuestions.length + " correctly." -->
+
+    <!-- End Summary Section -->
+    
+  <!-- link to JS file -->  
   <script src="./assets/js/script.js"></script>
 
 </body>
