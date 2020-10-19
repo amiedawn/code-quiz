@@ -59,7 +59,6 @@ arrQuestions = [
   }
 ];
 
-
 var choiceA = document.querySelector("#A");
 var choiceB = document.querySelector("#B");
 var choiceC = document.querySelector("#C");
@@ -98,7 +97,8 @@ function startQuiz() {
 
 function countdownTimer() { 
   showTimer = setInterval(function() {
-    document.getElementById("countdownTimer").innerHTML = timeLeft; //print timer to screen
+    //print timer to screen
+    document.getElementById("countdownTimer").innerHTML = timeLeft; 
     timeLeft = timeLeft - 1;
     if (timeLeft <= 0) {
       clearInterval(showTimer);
@@ -135,8 +135,8 @@ function answerRW(answer) {
   console.log(arrQuestions[currentQIndex].rightChoice)
    if( answer === arrQuestions[currentQIndex].rightChoice) {
      displayRW.innerHTML = "Right!";
-     // increase score by 1 if answer is right
-     score = score + 1;
+     // score is time left plus number of questions right
+     score = score + 1 + timeLeft;
     // decrease time by 10 seconds if an answer is wrong
     } else {
       displayRW.innerHTML = "Wrong!";
@@ -144,7 +144,7 @@ function answerRW(answer) {
    }
    console.log ("currentQIndex", currentQIndex);
    console.log ("lastQIndex", lastQIndex);
-   //debugger;
+  
    if (currentQIndex < lastQIndex) {
      currentQIndex = currentQIndex + 1;
      writeQuestions();
@@ -155,7 +155,7 @@ function answerRW(answer) {
    }  
 };  
 
-function showSummary() {
+var showSummary = function() {
   var container = document.createElement("div");
   container.style.textAlign = "center";
   document.body.appendChild(container);
@@ -164,17 +164,17 @@ function showSummary() {
   done.style.textAlign = "center";
   done.textContent = "All done!";
 
+  var finalScore = document.createElement("h2");
+  finalScore.style.textAlign = "center";
+  finalScore.textContent = "Your final score is: " + score;
+
+  var initialsInput = document.querySelector("input[name='initials']").value  
 
   
-  
-  /********figure this out */
-
 }
 
-//Summary screen
 
 // event listeners:
-// show startQuiz screen
-showStartQuizScreen();
-//start.addEventListener("click", startQuiz); <- works except for timer
-document.querySelector("#startQuiz").onclick = startQuiz; 
+
+showStartQuizScreen(); // show startQuiz screen
+document.querySelector("#startQuiz").onclick = startQuiz; //enables startQuiz button
