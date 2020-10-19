@@ -86,16 +86,27 @@ var choiceD = document.querySelector("#D");
 // choiceD.onclick = checkAnswer;
 
 function showStartQuizScreen() {
-  main.style.display;
+  main.style.display = "block";
   showQuestion.style.display = "none";
   showChoices.style.display = "none";
 };
 
 function startQuiz() {
   debugger;
-  main.style.display = "none";
-  showQuestion.style.display = "inline";
-  showChoices.style.display = "block";
+ var showHideStart = document.getElementById("main");
+ var showHideQuestion = document.getElementById("showQuestion");
+ var showHideChoices = document.getElementById("showChoices");
+
+    if (showHideQuestion.style.display === "none") {
+      showHideQuestion.style.display = "block";
+      showHideChoices.style.display = "block";
+      showHideStart.style.display = "none";
+    }
+  
+ // main.style.display = "none";
+ // showQuestion.style.display = "inline";
+  //showChoices.style.display = "block";
+ // frameTotal.style.display = "block";
   
   writeQuestions();
   generateQuestions();
