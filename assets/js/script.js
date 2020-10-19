@@ -11,12 +11,17 @@ var frameTotal = document.querySelector("#frameTotal");
 var showTimer = document.querySelector("#showTimer");
 var totalTimeTrack = document.querySelector("#totalTimeTrack");
 var showTimeTrack = document.querySelector("#showTimeTrack");
+var displayRW = document.querySelector("#displayRW");
+var summaryBox = document.querySelector("#rightOrWrong"); // <= not sure sure on this
 
 // var showCounter = document.querySelector("#showCounter");
 // var displayRW = document.querySelector("#displayRW");
 var highScores = document.querySelector(highScores);
 // var generateBtn = document.querySelector("#writeQuestions");
 var answerChosen = document.querySelector(".choice")
+
+// increments to next question
+lastQIndex = arrQuestions.length - 1;
 
 // Questions and answers:
 arrQuestions = [
@@ -62,16 +67,11 @@ arrQuestions = [
   }
 ];
 
-// increments to next question
-lastQIndex = arrQuestions.length - 1;
-
 var lastQIndex = 0;
 var choiceA = document.querySelector("#A");
 var choiceB = document.querySelector("#B");
 var choiceC = document.querySelector("#C");
 var choiceD = document.querySelector("#D");
-
-
 
 // arrQuestions.choiceA.onclick = checkAnswer; **my try(wrong)
 // arrQuestions.choiceB.onclick = checkAnswer;
@@ -79,43 +79,54 @@ var choiceD = document.querySelector("#D");
 // arrQuestions.choiceD.onclick = checkAnswer;
 //**need to keep this section so that it will ask all the questions
 //collect answers chosen by user click
-choiceA.onclick = checkAnswer;
-choiceB.onclick = checkAnswer;
-choiceC.onclick = checkAnswer;
-choiceD.onclick = checkAnswer;
+// choiceA.onclick = checkAnswer;
+// choiceB.onclick = checkAnswer;
+// choiceC.onclick = checkAnswer;
+// choiceD.onclick = checkAnswer;
 
-//var lastQIndex = arrQuestions.length - 1;
+function showStartQuizScreen() {
+  main.style.display;
+  showQuestion.style.display = "none";
+  showChoices.style.display = "none";
+};
 
 function startQuiz() {
-  console.log("hello");  
-
   frameTotal.style.display = "none";
-  //writeQuestions();
-  showTimer = setInterval(countdownTimer, 1000);
+  showQuestion.style.display;
+  showChoices.style.display;
+  
   writeQuestions();
-  checkAnswer();
-}
+  generateQuestions();
+  countdownTimer();
+  showTimer = setInterval(countdownTimer, 1000);
+};
 
 function countdownTimer() { //print timer to screen
+
+//**** figure out how to store the score when the questions are answered before the timer runs out */
+
   if (timeLeft <= timer) {
     //counter.innerHTML = timer; this is given but doesn't work
     document.getElementById("countdownTimer").innerHTML = timeLeft;
     timeLeft = timeLeft - 1;
-   
+   //********add something to end the timer at 0 */
   } else {
+    //end the quiz and show the score
     timeLeft = 0;
-    //**store the score */
-    checkAnswer();
+    if (currentQIndex < lastQIndex) {
+      currentQIndex = currentQIndex + 1;
+      writeQuestions();
+    } else { 
+      // end the quiz and show the score
+      clearInterval(showTimer);
+      showScores();
+    }  
   }
 };
 
-
-//document.getElementById("countdownTimer").innerHTML = timeLeft;
-//debugger;
-
 //display question and choices to the screen
 function writeQuestions() {
-  console.log("currentQIndex", currentQIndex);
+  console.log("currentQ", currentQIndex);
   console.log("lastQIndex", lastQIndex);
   var q = arrQuestions[currentQIndex];
 
@@ -124,64 +135,51 @@ function writeQuestions() {
   choiceB.innerHTML = q.choiceB;
   choiceC.innerHTML = q.choiceC;
   choiceD.innerHTML = q.choiceD;
-}
-
-function checkAnswer(answer) {
-  console.log("currentQIndex", currentQIndex);
-  console.log("lastQIndex", lastQIndex);
-  if (currentQIndex <= lastQIndex) {
-    writeQuestions();
-    //checkAnswer();
-    currentQIndex = currentQIndex + 1; //makes it go to the next question
-    //displayRW.innerHTML = ""; //??
-  } else {
-    clearInterval(showTimer);
-    showScores();
-  }
 };
 
-function answerRW(answer) {
+function generateQuestions() {
+
+  console.log("currentQIndex", currentQIndex);
+  console.log("lastQIndex", lastQIndex);
+  for (var questionIndex = 0; questionIndex <= lastQIndex; questionIndex++) {
+    displayRW.innerHTML = displayRW.innerHTML + "<div class='RW' id=" + questionIndex + "></div>";
+  }
+};  
+ 
+function answerRW(answer) { 
   console.log(this.innerText.trim())
   console.log(arrQuestions[currentQIndex].rightChoice.trim())
-
-  if (arrQuestions[currentQIndex].rightChoice.trim() === this.innerText.trim()) {
-    displayRW.innerHTML = "Right!";
-    //checkAnswer();
-    writeQuestions();
-
-  } else {
-    displayRW.innerHTML = "Wrong!";
-    timeLeft = timeLeft - 10;
-    if (timer < 0) {
-      timeLeft.innerHTML = "Time is up!"
-    }
-
-    // timeLeft = timeLeft - 10; **these 4 lines if using timeLeft to display timer
-    // if (timeLeft < 0) {
-    //   //  timeLeft.innerHTML = "Time: 0 seconds remaining"; doesn't work
-    //    }
-    checkAnswer();
-  }
-}
-
-
+   if( answer === arrQuestions[currentQIndex].rightChoice.trim()) {
+     displayRW.innerHTML = "Right!";
+     rightOrWrong = rightOrWrong + 1;
+   } else {
+      displayRW.innerHTML = "Wrong!";
+   }
+   if (currentQIndex < lastQIndex) {
+     currentQIndex = currentQIndex + 1;
+     writeQuestions();
+   } else {
+     //end the quiz and show the score
+      clearInterval(showTimer);
+      showScores();
+   }  
+};  
 
 function showScores() {
-  // navigate to summary page and display score there
+  //display the summaryBox 
+  //determine and display score and other info on summary page
+  summaryBox.innerHTML = summaryBox.innerHTML + "<p>"+ timeLeft + "</p>";
+  //have them enter their initials
+
+
   window.location.href = "summary.html";
 
   /********figure this out */
-
 
 }
 
 
 // event listeners:
-//debugger;
-//document.addEventListener("click", startQuiz);// had before. lines up answer with question, but wont load first question
-  //**above, timer shows up after you click but totally wacky
-start.addEventListener("click", startQuiz); //from video reference (same as next try)
-//start.addEventListener("click", startQuiz);// won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
-//document.getElementById("startButton").addEventListener("click", startQuiz); //won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
-//start.querySelector("startButton").onclick = startQuiz; //won't load 1st question, if you click correct answer 1st, it says wrong and then starts with 1, but answers are misaligned
-//generateBtn.addEventListener("click", writeQuestions);// does same as rest
+// show startQuiz screen
+showStartQuizScreen();
+start.addEventListener("click", startQuiz); 
