@@ -140,11 +140,11 @@ function answerRW(answer) {
     // decrease time by 10 seconds if an answer is wrong
     } else {
       displayRW.innerHTML = "Wrong!";
-      timeLeft = timeLeft - 10;
+      timeLeft = timeLeft - 9;
    }
    console.log ("currentQIndex", currentQIndex);
    console.log ("lastQIndex", lastQIndex);
-   debugger;
+   //debugger;
    if (currentQIndex < lastQIndex) {
      currentQIndex = currentQIndex + 1;
      writeQuestions();
@@ -176,4 +176,5 @@ function showSummary() {
 // event listeners:
 // show startQuiz screen
 showStartQuizScreen();
-start.addEventListener("click", startQuiz); 
+//start.addEventListener("click", startQuiz); <- works except for timer
+document.querySelector("#startQuiz").onclick = startQuiz; 
