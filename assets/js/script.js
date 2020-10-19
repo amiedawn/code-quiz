@@ -1,4 +1,5 @@
 var currentQIndex = 0;
+var lastQIndex = 0;
 var choice = "";
 var timeLeft = 60;
 var timer = 60; 
@@ -17,11 +18,10 @@ var summaryBox = document.querySelector("#rightOrWrong"); // <= not sure sure on
 // var showCounter = document.querySelector("#showCounter");
 // var displayRW = document.querySelector("#displayRW");
 var highScores = document.querySelector(highScores);
-// var generateBtn = document.querySelector("#writeQuestions");
 var answerChosen = document.querySelector(".choice")
+var score = 0;
 
-// increments to next question
-lastQIndex = arrQuestions.length - 1;
+
 
 // Questions and answers:
 arrQuestions = [
@@ -39,7 +39,7 @@ arrQuestions = [
     choiceB: "b.  terminal/bash",
     choiceC: "c.  for loops",
     choiceD: "d.  console.log",
-    rightChoice: "d. console.log",
+    rightChoice: 'D',
   },
   {
     showQuestion: "3.  String values must be enclosed within _____________ when being assigned to variables. ",
@@ -47,7 +47,7 @@ arrQuestions = [
     choiceB: "b.  curly brackets",
     choiceC: "c.  parentheses",
     choiceD: "d.  square brackets",
-    rightChoice: "a. quotes",
+    rightChoice: 'A',
   },
   {
     showQuestion: "4.  Arrays in JavaScript can be used to store _____________ .",
@@ -55,7 +55,7 @@ arrQuestions = [
     choiceB: "b.  other arrays",
     choiceC: "c.  booleans",
     choiceD: "d.  all of the above",
-    rightChoice: "d. all of the above",
+    rightChoice: 'D',
   },
   {
     showQuestion: "5.  The condition in an if/else statement is enclosed with __________ .",
@@ -63,11 +63,11 @@ arrQuestions = [
     choiceB: "b.  curly brackets",
     choiceC: "c.  parentheses",
     choiceD: "d.  square brackets",
-    rightChoice: "c. parentheses",
+    rightChoice: 'C',
   }
 ];
 
-var lastQIndex = 0;
+
 var choiceA = document.querySelector("#A");
 var choiceB = document.querySelector("#B");
 var choiceC = document.querySelector("#C");
@@ -108,7 +108,7 @@ function startQuiz() {
 function countdownTimer() { //print timer to screen
 
 //**** figure out how to store the score when the questions are answered before the timer runs out */
-
+  
   if (timeLeft <= timer) {
     //counter.innerHTML = timer; this is given but doesn't work
     document.getElementById("countdownTimer").innerHTML = timeLeft;
@@ -117,6 +117,8 @@ function countdownTimer() { //print timer to screen
   } else {
     //end the quiz and show the score
     timeLeft = 0;
+    console.log("currentQIndex", currentQIndex);
+    console.log("lastQIndex", lastQIndex);
     if (currentQIndex < lastQIndex) {
       currentQIndex = currentQIndex + 1;
       writeQuestions();
@@ -130,7 +132,7 @@ function countdownTimer() { //print timer to screen
 
 //display question and choices to the screen
 function writeQuestions() {
-  console.log("currentQ", currentQIndex);
+  console.log("currentQIndex", currentQIndex);
   console.log("lastQIndex", lastQIndex);
   var q = arrQuestions[currentQIndex];
 
@@ -142,7 +144,8 @@ function writeQuestions() {
 };
 
 function generateQuestions() {
-
+  // increments to next question
+  lastQIndex = arrQuestions.length - 1;
   console.log("currentQIndex", currentQIndex);
   console.log("lastQIndex", lastQIndex);
   for (var questionIndex = 0; questionIndex <= lastQIndex; questionIndex++) {
@@ -155,11 +158,13 @@ function answerRW(answer) {
   console.log(arrQuestions[currentQIndex].rightChoice)
    if( answer === arrQuestions[currentQIndex].rightChoice) {
      displayRW.innerHTML = "Right!";
-     rightOrWrong = rightOrWrong + 1;
+     score = score + 1;
    } else {
       displayRW.innerHTML = "Wrong!";
    }
-   if (currentQIndex < lastQIndex) {
+   console.log ("currentQIndex", currentQIndex);
+   console.log ("lastQIndex", lastQIndex);
+   if (currentQIndex <= lastQIndex) {
      currentQIndex = currentQIndex + 1;
      writeQuestions();
    } else {

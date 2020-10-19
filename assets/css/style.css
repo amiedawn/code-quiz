@@ -1,5 +1,4 @@
-html,
-body,
+html,body {overflow-x:hidden;}
 
 
 body { /* start page text and background */
@@ -8,7 +7,7 @@ body { /* start page text and background */
 }
 
 .top-line {
-  width: 100%;
+  /*width: 100%;*/
   padding: 50px 35px;
   display: flex;
   flex-direction: rows;
@@ -26,11 +25,11 @@ body { /* start page text and background */
 
 .top-line p {
  /* float: right;*/
-  margin-right: 220px;
+  margin-right: 20px;
 }  
 
 .activeTimer { /* countdown on questions page */
-  margin-right: 200px;
+  margin-right: 20px;
 }
 
 .main { /* start page center h1, p, and button */
@@ -87,7 +86,7 @@ body { /* start page text and background */
   font-size: 25px;
 } 
 
-#writeQuestions, #showChoices {
+#showQuestion, #showChoices {
   text-align: left;
   width: 100%;
   display: flex;
