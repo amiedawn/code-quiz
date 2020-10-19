@@ -77,7 +77,8 @@ var choiceD = document.querySelector("#D");
 // arrQuestions.choiceB.onclick = checkAnswer;
 // arrQuestions.choiceC.onclick = checkAnswer;
 // arrQuestions.choiceD.onclick = checkAnswer;
-//**need to keep this section so that it will ask all the questions
+
+//**need to keep this section so that it will ask all the questions, but if I add it, it has 4 boxes at start of project
 //collect answers chosen by user click
 // choiceA.onclick = checkAnswer;
 // choiceB.onclick = checkAnswer;
@@ -91,9 +92,10 @@ function showStartQuizScreen() {
 };
 
 function startQuiz() {
-  frameTotal.style.display = "none";
-  showQuestion.style.display;
-  showChoices.style.display;
+  debugger;
+  main.style.display = "none";
+  showQuestion.style.display = "inline";
+  showChoices.style.display = "block";
   
   writeQuestions();
   generateQuestions();
