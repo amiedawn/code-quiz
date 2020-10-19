@@ -17,4 +17,6 @@ https://github.com/amiedawn/code-quiz
 ![Screenshot](/assets/images/startscreen.png)
 
 ## Contribution
-Amie Carroll
+*Amie Carroll
+*I extensively used https://www.youtube.com/watch?v=49pYIMygIcU by Code Explained to write the code. I could not figure out how to do it on my own and cannot claim it as such, though this has been a good learning tool.
+*My teacher, several learning assistants, and the TAs
