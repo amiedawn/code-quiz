@@ -2,7 +2,7 @@ var currentQIndex = 0;
 var lastQIndex = 0;
 var choice = "";
 var timeLeft = 60;
-var timer = 60; 
+var timer = 60;
 var arrQuestions = "";
 var score = 0;
 var start = document.querySelector("#start");
@@ -11,7 +11,6 @@ var showQuestion = document.querySelector("#showQuestion");
 var frameTotal = document.querySelector("#frameTotal");
 var showTimer = document.querySelector("#showTimer");
 var displayRW = document.querySelector("#displayRW");
-var summaryBox = document.querySelector("#rightOrWrong"); // <= not sure sure on this
 var summaryScreen = document.querySelector("#summaryScreen");
 
 
@@ -102,23 +101,20 @@ function startQuiz() {
   generateQuestions();
 };
 
-function countdownTimer() { 
-  showTimer = setInterval(function() {
+function countdownTimer() {
+  showTimer = setInterval(function () {
     //print timer to screen
-    document.getElementById("countdownTimer").innerHTML = timeLeft; 
+    document.getElementById("countdownTimer").innerHTML = timeLeft;
     timeLeft = timeLeft - 1;
     if (timeLeft <= 0) {
       clearInterval(showTimer);
       showScores();
     }
-  }, 1000);  
-};  
+  }, 1000);
+};
 
 //display question and choices to the screen
 function writeQuestions() {
-
-  console.log("currentQIndex", currentQIndex);
-  console.log("lastQIndex", lastQIndex);
   var q = arrQuestions[currentQIndex];
 
   showQuestion.innerHTML = "<p>" + q.showQuestion + "</p>";
@@ -131,39 +127,34 @@ function writeQuestions() {
 function generateQuestions() {
   // increments to next question
   lastQIndex = arrQuestions.length - 1;
-  console.log("currentQIndex", currentQIndex);
-  console.log("lastQIndex", lastQIndex);
   for (var questionIndex = 0; questionIndex <= lastQIndex; questionIndex++) {
     displayRW.innerHTML = displayRW.innerHTML + "<div class='RW' id=" + questionIndex + "></div>";
   }
-};  
- 
-function answerRW(answer) { 
-  console.log(answer)
-  console.log(arrQuestions[currentQIndex].rightChoice)
-   if( answer === arrQuestions[currentQIndex].rightChoice) {
-     displayRW.innerHTML = "Right!";
-     // score is time left plus number of questions right
-     score = score + 1 + timeLeft;
+};
+
+function answerRW(answer) {
+  if (answer === arrQuestions[currentQIndex].rightChoice) {
+    displayRW.innerHTML = "Right!";
+    // score is time left plus number of questions right
+    score = score + 1 + timeLeft;
     // decrease time by 10 seconds if an answer is wrong
-    } else {
-      displayRW.innerHTML = "Wrong!";
-      timeLeft = timeLeft - 9;
-   }
-   console.log ("currentQIndex", currentQIndex);
-   console.log ("lastQIndex", lastQIndex);
-  
-   if (currentQIndex < lastQIndex) {
-     currentQIndex = currentQIndex + 1;
-     writeQuestions();
-    } else {
-     clearInterval(showTimer);
-     showScores();
-    }
-};  
+  } else {
+    displayRW.innerHTML = "Wrong!";
+    timeLeft = timeLeft - 9;
+  }
+
+  if (currentQIndex < lastQIndex) {
+    currentQIndex = currentQIndex + 1;
+    writeQuestions();
+  } else {
+    clearInterval(showTimer);
+    showScores();
+  }
+};
 
 function showScores() {
   hideStartAndQuestions();
+  displayRW.style.display = "none";
   // var container = document.createElement("div");
   // container.style.textAlign = "center";
   // document.body.appendChild(container);
@@ -191,6 +182,4 @@ showStartQuizScreen(); // show startQuiz screen
 
 // event listeners:
 document.querySelector("#startQuiz").onclick = startQuiz; //enables startQuiz button
-submit-initials.addEventListener("click", showSummary); //submit initials and output with score to screen
-
-
+submit - initials.addEventListener("click", showSummary); //submit initials and output with score to screen
