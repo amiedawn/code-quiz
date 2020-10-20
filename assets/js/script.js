@@ -13,7 +13,7 @@ var showTimer = document.querySelector("#showTimer");
 var displayRW = document.querySelector("#displayRW");
 var summaryBox = document.querySelector("#rightOrWrong"); // <= not sure sure on this
 var summaryScreen = document.querySelector("#summaryScreen");
-//var highScores = document.querySelector(highScores);
+
 
 // Questions and answers:
 arrQuestions = [
@@ -69,24 +69,31 @@ function showStartQuizScreen() {
   main.style.display = "block";
   showQuestion.style.display = "none";
   showChoices.style.display = "none";
- // summaryScreen.style.display = "none";
+  summaryScreen.style.display = "none";
 };
 
 // show questions screen and hide start and summary
 function hideSummaryScreen() {
   main.style.display = "none";
- // summaryScreen.style.display = "none";
+  summaryScreen.style.display = "none";
   showQuestion.style.display = "block";
   showChoices.style.display = "block";
 }
 
 // show summary screen and hide questions and main
 function showSummaryScreen() {
-  //summaryScreen.style.display = "block";
+  summaryScreen.style.display = "block";
   showQuestion.style.display = "none";
   showChoices.style.display = "none";
   main.style.display = "none";
 };
+
+function hideStartAndQuestions() {
+  showQuestion.style.display = "none";
+  showChoices.style.display = "none";
+  main.style.display = "none";
+  summaryScreen.style.display = "block";
+}
 
 function startQuiz() {
   hideSummaryScreen();
@@ -102,13 +109,14 @@ function countdownTimer() {
     timeLeft = timeLeft - 1;
     if (timeLeft <= 0) {
       clearInterval(showTimer);
-      showSummary();
+      showScores();
     }
   }, 1000);  
 };  
 
 //display question and choices to the screen
 function writeQuestions() {
+
   console.log("currentQIndex", currentQIndex);
   console.log("lastQIndex", lastQIndex);
   var q = arrQuestions[currentQIndex];
@@ -148,33 +156,41 @@ function answerRW(answer) {
    if (currentQIndex < lastQIndex) {
      currentQIndex = currentQIndex + 1;
      writeQuestions();
-   } else {
-     //end the quiz and show the score
-      clearInterval(showTimer);
-      showSummary(); 
-   }  
+    } else {
+     clearInterval(showTimer);
+     showScores();
+    }
 };  
 
-var showSummary = function() {
-  var container = document.createElement("div");
-  container.style.textAlign = "center";
-  document.body.appendChild(container);
+function showScores() {
+  hideStartAndQuestions();
+  // var container = document.createElement("div");
+  // container.style.textAlign = "center";
+  // document.body.appendChild(container);
 
-  var done = document.createElement("h1");
-  done.style.textAlign = "center";
-  done.textContent = "All done!";
+  // var done = document.createElement("h1");
+  // done.style.textAlign = "center";
+  // done.textContent = "All done!";
 
   var finalScore = document.createElement("h2");
   finalScore.style.textAlign = "center";
   finalScore.textContent = "Your final score is: " + score;
 
-  var initialsInput = document.querySelector("input[name='initials']").value  
+  var initialsInput = document.querySelector("input[name='initials']").value;
+};
 
-  
-}
+var showSummary = function () {
+  var output = initialsInput.textContent + " - " + score;
+  output.style.textAlign = "center";
+  output.setAttribute("style", "bordered;");
+};
 
+
+//*START*
+showStartQuizScreen(); // show startQuiz screen
 
 // event listeners:
-
-showStartQuizScreen(); // show startQuiz screen
 document.querySelector("#startQuiz").onclick = startQuiz; //enables startQuiz button
+submit-initials.addEventListener("click", showSummary); //submit initials and output with score to screen
+
+
