@@ -110,6 +110,7 @@ function countdownTimer() {
       clearInterval(showTimer);
       showScores();
     }
+    //return timeLeft;
   }, 1000);
 };
 
@@ -136,7 +137,7 @@ function answerRW(answer) {
   if (answer === arrQuestions[currentQIndex].rightChoice) {
     displayRW.innerHTML = "Right!";
     // score is time left plus number of questions right
-    score = score + 1 + timeLeft;
+    score++;
     // decrease time by 10 seconds if an answer is wrong
   } else {
     displayRW.innerHTML = "Wrong!";
@@ -163,9 +164,14 @@ function showScores() {
   // done.style.textAlign = "center";
   // done.textContent = "All done!";
 
-  var finalScore = document.createElement("h2");
-  finalScore.style.textAlign = "center";
-  finalScore.textContent = "Your final score is: " + score;
+  console.log("timer", timer);
+  console.log("timeleft", timeLeft);
+  console.log("score", score);
+  var finalScore = document.querySelector("#finalScore");
+  finalScore = score + timeLeft;
+  console.log("finalScore", finalScore)
+  //finalScore.style.textAlign = "center";
+  finalScore.textContent = "Your final score is: " + finalScore;
 
   var initialsInput = document.querySelector("input[name='initials']").value;
 };
@@ -181,5 +187,6 @@ var showSummary = function () {
 showStartQuizScreen(); // show startQuiz screen
 
 // event listeners:
-document.querySelector("#startQuiz").onclick = startQuiz; //enables startQuiz button
-submit - initials.addEventListener("click", showSummary); //submit initials and output with score to screen
+document.querySelector("#start").onclick = startQuiz; //enables startQuiz button
+//document.querySelector("#startQuiz").onclick = startQuiz; //enables startQuiz button
+//submit - initials.addEventListener("click", showSummary); //submit initials and output with score to screen
